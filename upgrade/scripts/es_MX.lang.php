@@ -1,0 +1,240 @@
+<?php
+/**
+ *
+ * SugarCRM Community Edition is a customer relationship management program developed by
+ * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
+ *
+ * SuiteCRM is an extension to SugarCRM Community Edition developed by SalesAgility Ltd.
+ * Copyright (C) 2011 - 2019 SalesAgility Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Affero General Public License version 3 as published by the
+ * Free Software Foundation with the addition of the following permission added
+ * to Section 15 as permitted in Section 7(a): FOR ANY PART OF THE COVERED WORK
+ * IN WHICH THE COPYRIGHT IS OWNED BY SUGARCRM, SUGARCRM DISCLAIMS THE WARRANTY
+ * OF NON INFRINGEMENT OF THIRD PARTY RIGHTS.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU Affero General Public License along with
+ * this program; if not, see http://www.gnu.org/licenses or write to the Free
+ * Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ * 02110-1301 USA.
+ *
+ * You can contact SugarCRM, Inc. headquarters at 10050 North Wolfe Road,
+ * SW2-130, Cupertino, CA 95014, USA. or at email address contact@sugarcrm.com.
+ *
+ * The interactive user interfaces in modified source and object code versions
+ * of this program must display Appropriate Legal Notices, as required under
+ * Section 5 of the GNU Affero General Public License version 3.
+ *
+ * In accordance with Section 7(b) of the GNU Affero General Public License version 3,
+ * these Appropriate Legal Notices must retain the display of the "Powered by
+ * SugarCRM" logo and "Supercharged by SuiteCRM" logo. If the display of the logos is not
+ * reasonably feasible for technical reasons, the Appropriate Legal Notices must
+ * display the words "Powered by SugarCRM" and "Supercharged by SuiteCRM".
+ */
+
+if (!defined('sugarEntry') || !sugarEntry) {
+    die('Not A Valid Entry Point');
+}
+
+$mod_strings = array(
+    'DEFAULT_CHARSET' => 'UTF-8',
+    'LBL_DISABLED_TITLE' => 'Instalación de SuiteCRM Deshabilitada',
+    'LBL_DISABLED_TITLE_2' => 'La Instalación de SuiteCRM ha sido Deshabilitada',
+    'LBL_DISABLED_DESCRIPTION' => 'El instalador ya ha sido ejecutado. Como medida de seguridad, se ha deshabilitado para que no sea ejecutado por segunda vez.  Si está totalmente seguro de que desea ejecutarlo de nuevo, por favor vaya a su archivo config.php y localice (o añada) una variable llamada  \'installer_locked\' y establézcala a \'false\'.  La línea debería quedar como lo siguiente:',
+    'LBL_DISABLED_DESCRIPTION_2' => 'Después de que se haya realizado este cambio, puede hacer clic en el botón "Iniciar" situado abajo, para iniciar su instalación.  <i>Una vez se haya completado la instalación, es probable que desee cambiar el valor para la variable \'installer_locked\' a \'true\'.</i>',
+    'LBL_DISABLED_HELP_1' => 'Para ayuda sobre la instalación, por favor visite los foros de soporte de SuiteCRM',
+    'LBL_DISABLED_HELP_2' => 'Foros de soporte',
+
+    'LBL_REG_TITLE' => 'Registro',
+    'LBL_REG_CONF_1' => 'Por favor tome un momento para registrarse en SuiteCRM. dejándonos saber un poco acerca de cómo su empresa planea utilizar SuiteCRM, podemos asegurar que siempre le estamos entregando el producto correcto para sus necesidades de negocio.',
+    'LBL_REG_CONF_2' => 'Su nombre y dirección de correo electrónico son los únicos campos requeridos para el registro. El resto de campos son opcionales, pero de mucho valor. No vendemos, alquilamos, compartimos, o distribuimos en modo alguno la información aquí recogida a terceros',
+    'LBL_REG_CONF_3' => 'Gracias por registrarse. Haga clic en el botón Finalizar para iniciar una sesión en SuiteCRM. Necesitará iniciar la sesión por primera vez utilizando el nombre de usuario "admin" y la contraseña que introdujo en el paso 2.',
+
+
+    'ERR_ADMIN_PASS_BLANK' => 'La contraseña de administrador SuiteCRM no puede estar en blanco.',
+    'ERR_CHECKSYS_CALL_TIME' => 'Permitir referencia de tiempo de llamada está desactivada (habilítelo en php.ini)',
+    'ERR_CHECKSYS_CURL' => 'No encontrado: El Planificador de SuiteCRM tendrá funcionalidad limitada.',
+    'ERR_CHECKSYS_MEM_LIMIT_1' => 'Advertencia: $memory_limit (poner en ',
+    'ERR_CHECKSYS_MEM_LIMIT_2' => 'M o más en su archivo php.ini)',
+    'ERR_CHECKSYS_NO_SESSIONS' => 'Ha ocurrido un error al escribir y leer las variables de sesión.  No se ha podido proceder con la instalación',
+    'ERR_CHECKSYS_NOT_VALID_DIR' => 'No es un Directorio Válido',
+    'ERR_CHECKSYS_NOT_WRITABLE' => 'Advertencia: No se puede escribir',
+    'ERR_CHECKSYS_PHP_INVALID_VER' => 'Versión instalada de PHP inválida:( ver',
+    'ERR_CHECKSYS_PHP_UNSUPPORTED' => 'Versión de PHP Instalada No Soportada: ( ver',
+    'ERR_CHECKSYS_SAFE_MODE' => 'Modo seguro está activado (por favor deshabilita en php.ini)',
+    'ERR_DB_ADMIN' => 'El nombre de usuario y / o contraseña del administrador de la base de datos no es válido (Error ',
+    'ERR_DB_EXISTS_NOT' => 'Base de Datos Especificada no existe.',
+    'ERR_DB_EXISTS_WITH_CONFIG' => 'La base de datos ya existe con información de configuración. Para ejecutar una instalación con la base de datos seleccionada vuelva a ejecutar la instalación y seleccione "Eliminar las tablas existentes y volver a crearlas?". Para actualizar utilice el Asistente de Actualizaciones en la Consola de Administración. Por favor lea la documentación de actualización <a href="https://docs.suitecrm.com/admin/installation-guide/upgrading/" target="_new">aquí</a>.',
+    'ERR_DB_EXISTS' => 'Nombre de la base de datos ya existe, no se puede crear otra con el mismo nombre.',
+    'ERR_DB_HOSTNAME' => 'El nombre de equipo no puede estar vacío',
+    'ERR_DB_INVALID' => 'El tipo de base de datos seleccionado no es válido',
+    'ERR_DB_LOGIN_FAILURE_MYSQL' => 'Nombre de usuario de base de datos de SuiteCRM o contraseña inválida (Error ',
+    'ERR_DB_MYSQL_VERSION1' => 'Versión de MySQL ',
+    'ERR_DB_MYSQL_VERSION2' => ' no es compatible.  Sólo MySQL 4.1.x y superior son compatibles.',
+    'ERR_DB_NAME' => 'El nombre de base de datos no puede estar vacío',
+    'ERR_DB_NAME2' => "El nombre de base de datos no puede contener los caracteres '\\', '/', o '.'",
+    'ERR_DB_PASSWORD' => 'No coinciden las contraseñas de SuiteCRM.',
+    'ERR_DB_PRIV_USER' => 'Nombre de usuario de administrador de base de datos requerido.',
+    'ERR_DB_USER_EXISTS' => 'Nombre de usuario para SuiteCRM ya existe, no puede crear otro con el mismo nombre.',
+    'ERR_DB_USER' => 'Nombre de usuario para SuiteCRM no puede estar vacío.',
+    'ERR_DBCONF_VALIDATION' => 'Por favor, corrija los siguientes errores antes de continuar:',
+    'ERR_ERROR_GENERAL' => 'Se han encontrado los siguientes errores:',
+    'ERR_LICENSE_MISSING' => 'Faltan Campos Requeridos',
+    'ERR_LICENSE_NOT_FOUND' => 'No se ha encontrado el archivo de licencia',
+    'ERR_LOG_DIRECTORY_NOT_EXISTS' => 'El directorio de trazas indicado no es un directorio válido',
+    'ERR_LOG_DIRECTORY_NOT_WRITABLE' => 'El directorio de trazas indicado no es un directorio escribible',
+    'ERR_LOG_DIRECTORY_REQUIRED' => 'Se requiere un directorio de trazas si desea indicar uno personalizado',
+    'ERR_NO_DIRECT_SCRIPT' => 'No se ha podido procesar el script directamente',
+    'ERR_PASSWORD_MISMATCH' => 'No coinciden las contraseñas para admin de SuiteCRM.',
+    'ERR_PERFORM_CONFIG_PHP_1' => 'No ha podido escribirse en el archivo <span class=stop>config.php</span>',
+    'ERR_PERFORM_CONFIG_PHP_2' => 'Puede continuar esta instalación crando manualmente el archivo config.php y pegando la información de configuración indicada a continuación en el archivo config.php.  Sin embargo, <strong>debe </strong>crear el archivo config.php antes de avanzar al siguiente paso',
+    'ERR_PERFORM_CONFIG_PHP_3' => '¿Recordó crear el archivo config.php?',
+    'ERR_PERFORM_CONFIG_PHP_4' => 'Aviso: No ha podido escribirse en el archivo config.php.  Por favor, asegúrese de que existe',
+    'ERR_PERFORM_HTACCESS_1' => 'No ha podido escribirse en el archivo ',
+    'ERR_PERFORM_HTACCESS_2' => ' archivo.',
+    'ERR_PERFORM_HTACCESS_3' => 'Si quiere securizar su archivo de trazas, para evitar que sea accesible mediante el navegador web, cree un archivo .htaccess en su directorio de trazas con la línea:',
+    'ERR_PERFORM_NO_TCPIP' => '<b>No se detecta una conexión a internet.</b> Cuando se tenga una conexión a Internet, por favor visite <a href=\\"http://www.suitecrm.com\\"> http://www.suitecrm.com</a> para registrarse en SuiteCRM. Saber un poco acerca de cómo la empresa planea utilizar SuiteCRM, podemos asegurar que siempre estamos entregando la aplicación correcta para sus necesidades de negocio.',
+    'ERR_SESSION_DIRECTORY_NOT_EXISTS' => 'El directorio de sesión indicado no es un directorio válido',
+    'ERR_SESSION_DIRECTORY' => 'El directorio de sesión indicado no es un directorio escribible',
+    'ERR_SESSION_PATH' => 'Se requiere un directorio de sesión si desea indicar uno personalizado',
+    'ERR_SI_NO_CONFIG' => 'No ha incluido config_si.php en la carpeta raíz de documentos, o no ha definido $sugar_config_si en config.php',
+    'ERR_SITE_GUID' => 'Se requiere un ID de Aplicación si desea indicar uno personalizado',
+    'ERR_URL_BLANK' => 'URL no puede estar en blanco.',
+    'LBL_BACK' => 'Atrás',
+    'LBL_CHECKSYS_1' => 'Para un correcto funcionamiento de SuiteCRM, asegúrese de que todo los puntos de verificación descritos a continuación son de color verdes. Si alguno esta en rojo, por favor tome las medidas necesarias para solucionarlo.',
+    'LBL_CHECKSYS_CACHE' => 'Subdirectorios de Caché Escribibles',
+    'LBL_CHECKSYS_CALL_TIME' => 'PHP Permitir referencia de pase de tiempo de llamada activada',
+    'LBL_CHECKSYS_COMPONENT' => 'Componente',
+    'LBL_CHECKSYS_CONFIG' => 'Archivo de Configuración de SuiteCRM (config.php) Escribible',
+    'LBL_CHECKSYS_CURL' => 'biblioteca cURL',
+    'LBL_CHECKSYS_CUSTOM' => 'Directorio personalizado escribible',
+    'LBL_CHECKSYS_DATA' => 'Subdirectorios de Datos Escribibles',
+    'LBL_CHECKSYS_MEM_OK' => 'Correcto (Sin Límite)',
+    'LBL_CHECKSYS_MEM_UNLIMITED' => 'Correcto (Sin Límite)',
+    'LBL_CHECKSYS_MEM' => 'Límite de memoria PHP >= ',
+    'LBL_CHECKSYS_MODULE' => 'Subdirectorios y Archivos de Módulos Escribibles',
+    'LBL_CHECKSYS_NOT_AVAILABLE' => 'No disponible',
+    'LBL_CHECKSYS_OK' => 'Correcto',
+    'LBL_CHECKSYS_PHP_INI' => '<b>Nota:</b> Archivo de Configuración de Php (php.ini) se encuentra en:',
+    'LBL_CHECKSYS_PHP_OK' => 'Correcto (ver ',
+    'LBL_CHECKSYS_PHPVER' => 'Versión de PHP',
+    'LBL_CHECKSYS_RECHECK' => 'Comprobar de nuevo',
+    'LBL_CHECKSYS_SAFE_MODE' => 'Modo Seguro de PHP Deshabilitado',
+    'LBL_CHECKSYS_SESSION' => 'Ruta de Almacenamiento de Sesión Escribible (',
+    'LBL_CHECKSYS_STATUS' => 'Estado',
+    'LBL_CHECKSYS_TITLE' => 'Aceptación de Comprobaciones del Sistema',
+    'LBL_CHECKSYS_XML' => 'Análisis XML',
+    'LBL_CLOSE' => 'Cerrar',
+    'LBL_CONFIRM_BE_CREATED' => 'será creado',
+    'LBL_CONFIRM_DB_TYPE' => 'Tipo de Base de datos',
+    'LBL_CONFIRM_DIRECTIONS' => 'Por favor, confirme la siguiente configuración.  Si desea cambiar cualquiera de los valores, haga clic en "Atrás" para editarlos.  En otro caso, haga clic en "Siguiente" para iniciar la instalación',
+    'LBL_CONFIRM_LICENSE_TITLE' => 'Información de Licencia',
+    'LBL_CONFIRM_NOT' => 'no',
+    'LBL_CONFIRM_TITLE' => 'Confirmar Configuración',
+    'LBL_CONFIRM_WILL' => 'será',
+    'LBL_DBCONF_CREATE_DB' => 'Crear Base de datos',
+    'LBL_DBCONF_CREATE_USER' => 'Crear usuario',
+    'LBL_DBCONF_DB_DROP_CREATE_WARN' => 'Advertencia: Todos los datos de SuiteCRM serán eliminados<br>si se marca esta opción.',
+    'LBL_DBCONF_DB_DROP_CREATE' => '¿Eliminar las tablas de SuiteCRM actuales y crearlas de nuevo?',
+    'LBL_DBCONF_DB_NAME' => 'Nombre de Base de datos',
+    'LBL_DBCONF_DB_PASSWORD' => 'Contraseña de base de datos',
+    'LBL_DBCONF_DB_PASSWORD2' => 'Vuelva a escribir la contraseña de la base de datos',
+    'LBL_DBCONF_DB_USER' => 'Nombre de usuario de base de datos',
+    'LBL_DBCONF_DEMO_DATA' => '¿Introducir Datos de Demostración en la Base de datos?',
+    'LBL_DBCONF_HOST_NAME' => 'Nombre del Host',
+    'LBL_DBCONF_INSTRUCTIONS' => 'Por favor, introduzca la información de configuración de su base de datos a continuación. Si no está seguro de qué datos utilizar, le sugerimos que utilice los valores por defecto',
+    'LBL_DBCONF_MB_DEMO_DATA' => '¿Utilizar texto multi-byte en datos de demostración?',
+    'LBL_DBCONF_PRIV_PASS' => 'Contraseña de Usuario Privilegiado de Base de datos',
+    'LBL_DBCONF_PRIV_USER_2' => '¿Corresponde la Cuenta de Base de datos Anterior a un Usuario Privilegiado?',
+    'LBL_DBCONF_PRIV_USER_DIRECTIONS' => 'Este usuario privilegiado de base de datos debe tener los permisos adecuados para crear una base de datos, eliminar/crear tablas, y crear un usuario.  Este usuario privilegiado de base de datos sólo se utilizará para realizar estas tareas según sean necesarias durante el proceso de instalación.  También puede utilizar el mismo usuario de base de datos anterior si tiene los privilegios suficientes',
+    'LBL_DBCONF_PRIV_USER' => 'Nombre del Usuario Privilegiado de Base de datos',
+    'LBL_DBCONF_TITLE' => 'Configuración de Base de datos',
+    'LBL_HELP' => 'Ayuda',
+    'LBL_LICENSE_ACCEPTANCE' => 'Aceptación de Licencia',
+    'LBL_LICENSE_DIRECTIONS' => 'Si tiene información acerca de su licencia, por favor introdúzcala en los siguientes campos',
+    'LBL_LICENSE_DOWNLOAD_KEY' => 'Clave de descarga',
+    'LBL_LICENSE_EXPIRY' => 'Fecha de Caducidad',
+    'LBL_LICENSE_I_ACCEPT' => 'Aceptar',
+    'LBL_LICENSE_NUM_USERS' => 'Número de Usuarios',
+    'LBL_LICENSE_OC_DIRECTIONS' => 'Por favor, introduzca el nombre de clientes desconectados adquiridos',
+    'LBL_LICENSE_OC_NUM' => 'Número de Licencias de Cliente Desconectado',
+    'LBL_LICENSE_OC' => 'Licencias de Cliente Desconectado',
+    'LBL_LICENSE_PRINTABLE' => ' Vista Imprimible ',
+    'LBL_LICENSE_TITLE' => 'Información de Licencia',
+    'LBL_LICENSE_TITLE_2' => 'Licencia de SuiteCRM',
+    'LBL_LICENSE_USERS' => 'Usuarios con Licencia',
+    'LBL_MYSQL' => 'MySQL',
+    'LBL_NEXT' => 'Siguiente',
+    'LBL_NO' => 'No',
+    'LBL_ORACLE' => 'Oracle',
+    'LBL_PERFORM_ADMIN_PASSWORD' => 'Estableciendo la contraseña del admin del sitio',
+    'LBL_PERFORM_AUDIT_TABLE' => 'tabla de auditoría / ',
+    'LBL_PERFORM_CONFIG_PHP' => 'Creando el archivo de configuración de SuiteCRM',
+    'LBL_PERFORM_CREATE_DB_1' => 'Creaando la base de datos ',
+    'LBL_PERFORM_CREATE_DB_2' => ' en ',
+    'LBL_PERFORM_CREATE_DB_USER' => 'Creando el usuario y la contraseña de Base de datos...',
+    'LBL_PERFORM_CREATE_DEFAULT' => 'Creando datos de SuiteCRM predeterminados',
+    'LBL_PERFORM_CREATE_LOCALHOST' => 'Creando el usuario y la contraseña de Base de datos para localhost...',
+    'LBL_PERFORM_CREATE_RELATIONSHIPS' => 'Creando tablas de relaciones de SuiteCRM',
+    'LBL_PERFORM_CREATING' => 'creando /',
+    'LBL_PERFORM_DEFAULT_REPORTS' => 'Creando informes predefinidos',
+    'LBL_PERFORM_DEFAULT_SCHEDULER' => 'Creando trabajos del planificador por defecto',
+    'LBL_PERFORM_DEFAULT_SETTINGS' => 'Insertando configuración por defecto',
+    'LBL_PERFORM_DEFAULT_USERS' => 'Creando usuarios por defecto',
+    'LBL_PERFORM_DEMO_DATA' => 'Llenar las tablas de la base de datos con datos muestra (esto puede demorar)...',
+    'LBL_PERFORM_DONE' => 'hecho<br>',
+    'LBL_PERFORM_DROPPING' => 'eliminando /',
+    'LBL_PERFORM_FINISH' => 'Finalizado',
+    'LBL_PERFORM_LICENSE_SETTINGS' => 'Actualizando información de licencia',
+    'LBL_PERFORM_OUTRO_1' => 'La instalación de SuiteCRM ',
+    'LBL_PERFORM_OUTRO_2' => ' completo.',
+    'LBL_PERFORM_OUTRO_3' => 'Tiempo total:',
+    'LBL_PERFORM_OUTRO_4' => ' segundos.',
+    'LBL_PERFORM_OUTRO_5' => 'Memoria utilizada aproximadamente:',
+    'LBL_PERFORM_OUTRO_6' => 'bytes',
+    'LBL_PERFORM_OUTRO_7' => 'Su sistema ha sido instalado y configurado para su uso',
+    'LBL_PERFORM_REL_META' => 'metadatos de relaciones ... ',
+    'LBL_PERFORM_SUCCESS' => '¡Éxito!',
+    'LBL_PERFORM_TABLES' => 'Creación de tablas de aplicación, tablas de auditoría y relación metadatos SuiteCRM...',
+    'LBL_PERFORM_TITLE' => 'Realizar instalación',
+    'LBL_PRINT' => 'Imprimir',
+    'LBL_REQUIRED' => 'Campo requerido',
+    'LBL_SITECFG_ADMIN_PASS_2' => 'Re-enter Password de <em>Admin</em> de SuiteCRM',
+    'LBL_SITECFG_ADMIN_PASS_WARN' => 'Precaución: Esto substituirá la contraseña de admin de cualquier instalación previa',
+    'LBL_SITECFG_ADMIN_PASS' => 'SuiteCRM <em>Admin</em> Contraseña',
+    'LBL_SITECFG_APP_ID' => 'ID de Aplicación',
+    'LBL_SITECFG_CUSTOM_ID_DIRECTIONS' => 'Anule el ID de la aplicación generada automáticamente que impide que las sesiones de una instancia de SuiteCRM se utilicen en otra instancia. Si tiene un clúster de instalaciones de SuiteCRM, todos deben compartir la misma ID de aplicación.',
+    'LBL_SITECFG_CUSTOM_ID' => 'Proveer Su Propio ID de Aplicación',
+    'LBL_SITECFG_CUSTOM_LOG_DIRECTIONS' => 'Anule el directorio predeterminado donde reside el registro de SuiteCRM. No importa dónde resida el archivo de registro, el acceso a él a través del navegador se restringirá a través de un redireccionamiento .htaccess.',
+    'LBL_SITECFG_CUSTOM_LOG' => 'Usar un Directorio Personalizado de Trazas',
+    'LBL_SITECFG_CUSTOM_SESSION_DIRECTIONS' => 'Proporcione una carpeta segura para almacenar la información de sesión de SuiteCRM para evitar que los datos de la sesión sean vulnerables en los servidores compartidos.',
+    'LBL_SITECFG_CUSTOM_SESSION' => 'Utilizar un Directorio Personalizado de Sesiones para SuiteCRM',
+    'LBL_SITECFG_DIRECTIONS' => 'Por favor, introduzca la información de configuración de su sitio a continuación. Si no está seguro del significado de los campos, le sugerimos que utilice los valores por defecto',
+    'LBL_SITECFG_FIX_ERRORS' => 'Por favor, corrija los siguientes errores antes de continuar:',
+    'LBL_SITECFG_LOG_DIR' => 'Directorio de Trazas',
+    'LBL_SITECFG_SESSION_PATH' => 'Ruta al Directorio de Sesiones<br>(debe ser escribible)',
+    'LBL_SITECFG_SITE_SECURITY' => 'Seguridad Avanzada del Sitio',
+    'LBL_SITECFG_SUGAR_UP_DIRECTIONS' => 'Cuando esto esté habilitado, su sistema enviará periódicamente estadísticas anónimas de SuiteCRM Inc. sobre su instalación que nos ayudarán a comprender los patrones de uso y a mejorar el producto. A cambio de esta información, los administradores recibirán notificaciones de actualización cuando haya nuevas versiones o actualizaciones disponibles.',
+    'LBL_SITECFG_SUGAR_UP' => '¿Habilitar las actualizaciones de SuiteCRM?',
+    'LBL_SITECFG_SUGAR_UPDATES' => 'Configuración de Actualizaciones de SuiteCRM',
+    'LBL_SITECFG_TITLE' => 'Configuración del Sitio',
+    'LBL_SITECFG_URL' => 'URL de la Instancia de SuiteCRM',
+    'LBL_SITECFG_USE_DEFAULTS' => '¿Usar valores por defecto?',
+    'LBL_START' => 'Iniciar',
+    'LBL_STEP' => 'Paso',
+    'LBL_TITLE_WELCOME' => 'Bienvenido a SuiteCRM ',
+    'LBL_WELCOME_1' => 'Este instalador crea las tablas de base de datos de SuiteCRM y establece las variables de configuración necesarias para iniciar. El proceso completo debería tardar unos diez minutos.',
+    'LBL_WELCOME_2' => 'Para obtener ayuda con la instalación, visite los <a href="https://suitecrm.com/suitecrm/forum/suite-forum" target="_blank"> foros de asistencia de SuiteCRM </a>.',
+    'LBL_WELCOME_CHOOSE_LANGUAGE' => 'Elige tu idioma',
+    'LBL_WELCOME_SETUP_WIZARD' => 'Asistente de Instalación',
+    'LBL_WELCOME_TITLE_WELCOME' => 'Bienvenido a SuiteCRM ',
+    'LBL_WELCOME_TITLE' => 'Asistente de Instalación de SuiteCRM',
+    'LBL_WIZARD_TITLE' => 'Asistente de configuración de SuiteCRM: paso ',
+    'LBL_YES' => 'Sí',
+);

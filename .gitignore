@@ -1,0 +1,130 @@
+custom/include/tools/responsive_filemanager/thumbs/email01/*.png
+custom/include/tools/responsive_filemanager/thumbs/*/*.png
+custom/include/tools/responsive_filemanager/thumbs/*/*.jpg
+custom/include/tools/responsive_filemanager/source/*/*.jpg
+custom/include/tools/responsive_filemanager/source/*/*.png
+
+## First part from https://github.com/github/gitignore/blob/master/SugarCRM.gitignore
+# Ignore custom .htaccess stuff.
+cache/modules/unified_search_modules.php
+/.htaccess
+# Ignore the cache directory completely. *ATTENTION!* This will break things!
+# cache/*
+# Ignore some files and directories from the custom directory.
+custom/history/*
+custom/modulebuilder/*
+custom/working/*
+custom/modules/*/Ext/
+custom/application/Ext/*
+# Custom configuration should also be ignored.
+/config.php
+/config_override.php
+# The silent upgrade scripts aren't needed.
+silentUpgrade*.php
+# Logs files can safely be ignored.
+*.log
+# The new upload directories (since 6.4).
+upload/*
+upload_backup/*
+## IDE specific items
+# Eclipse
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+tramp
+# IntelliJ Idea
+*.iml
+*.ipr
+*.iws
+.idea/
+# NetBeans
+nbproject/
+# Vim
+.*.sw[a-z]
+*.un~
+Session.vim
+# Windows
+Thumbs.db
+Desktop.ini
+
+.php_cs.cache
+service-account.json
+
+*.orig
+
+planos/*
+
+# Ignore large parts of the annoying cache directory without breaking things.
+cache/diagnostic/*
+#cache/modules/*
+cache/modules/**/*.tpl
+cache/modules/**/*vardefs.php
+cache/modules/*/language/*.php
+cache/modules/**/*.js
+cache/modules/Schedulers/lastrun
+cache/smarty/cache/*
+cache/smarty/templates_c/*
+cache/themes/*
+cache/xml/*
+cache/Relationships/relationships.cache.php
+cache/modules/Relationships/relationships.cache.php
+cache/include/externalAPI.cache.js
+cache/include/externalAPI.cache.php
+cache/modules/SugarFeed/
+
+cache/csv/
+!cache/csv/empty
+cache/dashlets/
+!cache/dashlets/empty
+cache/dynamic_fields/
+!cache/dynamic_fields/empty
+cache/feeds/
+!cache/feeds/empty
+cache/generated_forms/
+!cache/generated_forms/empty
+cache/import/
+!cache/import/empty
+cache/jsLanguage/
+!cache/jsLanguage/empty
+cache/modules/emails/
+!cache/modules/emails/empty
+cache/pdf/
+!cache/pdf/empty
+cache/updload/
+!cache/upload/empty
+cache/xml/
+!cache/xml/empty
+.user.ini
+error_log_hasta06oct
+error_log_hasta27sept
+newrelic.ini
+cache/images/*
+webapp/tmp/cache/*
+historialclientes/tmp/cache/*
+.DS_Store
+error_log
+cache/htmlclean/*
+/custom/modules/CPRO_Promociones/import/*.xlsx
+/.vscode
+php.ini
+
+
+/vendor
